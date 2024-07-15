@@ -11,4 +11,4 @@ class Bandit:
         arm_prob = self.arms_probabilities[arm]
 
         if random_number < arm_prob: return 1 
-        else: 0
+        else: return 0
