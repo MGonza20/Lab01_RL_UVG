@@ -15,3 +15,16 @@ class Agent:
         # Exploitation
         else: return np.argmax(self.rewards)
 
+    def update_estimates(self, arm, reward):
+        
+        # Updating the number of times the arm was pulled
+        self.pull_count[arm] += 1
+
+        # Updating the estimated rewards for the arm
+        # ------------------------------------------- #
+        # Variables:
+        n = self.pull_count[arm]
+        Qn = self.rewards[arm]
+
+        # Formula:
+        self.rewards[arm] += Qn + (1/n) * (reward - Qn)
