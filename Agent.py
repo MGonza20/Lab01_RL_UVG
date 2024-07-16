@@ -1,5 +1,6 @@
 
 import numpy as np
+np.random.seed(314)
 
 class Agent:
     def __init__(self, epsilon, n_arms=10):
@@ -10,10 +11,12 @@ class Agent:
 
     def select_arm(self):
         # Exploration
-        if np.random.rand() < self.epsilon: return np.random.randint(self.n_arms)
+        if np.random.random() < self.epsilon: 
+            return np.random.randint(self.n_arms)
 
         # Exploitation
-        else: return np.argmax(self.rewards)
+        else:
+            return np.argmax(self.rewards)
 
     def update_estimates(self, arm, reward):
         
@@ -26,5 +29,5 @@ class Agent:
         n = self.pull_count[arm]
         Qn = self.rewards[arm]
 
-        # Formula:
-        self.rewards[arm] += Qn + (1/n) * (reward - Qn)
+        # Formula (Q_(n+1) = Q_n + 1/n * [R_n - Q_n])
+        self.rewards[arm] += (1/n) * (reward - Qn)
