@@ -29,5 +29,5 @@ class Agent:
         n = self.pull_count[arm]
         Qn = self.rewards[arm]
 
-        # Formula (Q_(n+1) = Q_n + 1/n * [R_n - Q_n])
+        # Formula: Q_(n+1) = Q_n + 1/n * [R_n - Q_n]
         self.rewards[arm] += (1/n) * (reward - Qn)
