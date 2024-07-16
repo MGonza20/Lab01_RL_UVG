@@ -10,13 +10,14 @@ class Agent:
 
     def select_arm(self):
         # Exploration
-        if np.random.rand() < self.epsilon: return np.random.randint(self.n_arms)
+        if np.random.rand() < self.epsilon: 
+            return np.random.randint(self.n_arms)
 
         # Exploitation
-        else: return np.argmax(self.rewards)
+        else: 
+            return np.argmax(self.rewards)
 
     def update_estimates(self, arm, reward):
-        
         # Updating the number of times the arm was pulled
         self.pull_count[arm] += 1
 
@@ -27,4 +28,4 @@ class Agent:
         Qn = self.rewards[arm]
 
         # Formula:
-        self.rewards[arm] += Qn + (1/n) * (reward - Qn)
+        self.rewards[arm] = Qn + (1/n) * (reward - Qn)
