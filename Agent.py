@@ -4,7 +4,7 @@ np.random.seed(314)
 
 class Agent:
     def __init__(self, epsilon, n_arms=10):
-        self.epsilon = epsilon                  # Epsilon value for epsilon-greedy strategy / exploration 
+        self.epsilon = epsilon                  # Epsilon value for epsilon-greedy strategy
         self.n_arms = n_arms                    # Number of arms
         self.rewards = np.zeros(n_arms)         # Matrix to store the estimated rewards for each arm
         self.pull_count = np.zeros(n_arms)      # Matrix to store the number of times each arm was pulled
